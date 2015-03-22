@@ -15,6 +15,9 @@ var glob = require('glob');
 var livereload = require('gulp-livereload');
 var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 
+// Manually added
+var DateRangePicker = require('react-bootstrap-daterangepicker');
+
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
 var dependencies = [
@@ -150,7 +153,7 @@ gulp.task('default', function () {
 
   browserifyTask({
     development: true,
-    src: './app/main.js',
+    src: './app/dateapp.js',
     dest: './build'
   });
   
