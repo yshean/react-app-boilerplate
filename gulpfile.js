@@ -46,7 +46,7 @@ var browserifyTask = function (options) {
     console.log('Building APP bundle');
     appBundler.bundle()
       .on('error', gutil.log)
-      .pipe(source('main.js'))
+      .pipe(source('dateapp.js'))
       .pipe(gulpif(!options.development, streamify(uglify())))
       .pipe(gulp.dest(options.dest))
       .pipe(gulpif(options.development, livereload()))
@@ -132,7 +132,7 @@ var cssTask = function (options) {
         var start = new Date();
         console.log('Building CSS bundle');
         gulp.src(options.src)
-          .pipe(concat('main.css'))
+          .pipe(concat('daterangepicker-bs3.css'))
           .pipe(gulp.dest(options.dest))
           .pipe(notify(function () {
             console.log('CSS bundle built in ' + (Date.now() - start) + 'ms');
@@ -142,7 +142,7 @@ var cssTask = function (options) {
       gulp.watch(options.src, run);
     } else {
       gulp.src(options.src)
-        .pipe(concat('main.css'))
+        .pipe(concat('daterangepicker-bs3.css'))
         .pipe(cssmin())
         .pipe(gulp.dest(options.dest));   
     }
@@ -169,7 +169,7 @@ gulp.task('deploy', function () {
 
   browserifyTask({
     development: false,
-    src: './app/main.js',
+    src: './app/dateapp.js',
     dest: './dist'
   });
   
